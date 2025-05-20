@@ -15,7 +15,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import java.io.IOException;
 import java.util.List;
 
-@Service
+@Service("adminMusicServices")
 public class MusicServices {
     private final S3Client s3Client;
 
