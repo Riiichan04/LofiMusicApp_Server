@@ -1,4 +1,4 @@
-package com.project.server.services;
+package com.project.server.services.admin;
 
 
 import com.project.server.entity.User;
@@ -20,4 +20,5 @@ public class UserServices {
     public User create(User user) {
         return userRepository.save(user);
     }
+
 }

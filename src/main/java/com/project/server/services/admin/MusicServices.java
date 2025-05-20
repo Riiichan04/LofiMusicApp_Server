@@ -1,4 +1,4 @@
-package com.project.server.services;
+package com.project.server.services.admin;
 
 import com.project.server.dto.MusicDTO;
 import com.project.server.entity.Music;
@@ -45,6 +45,7 @@ public class MusicServices {
             String musicKey = "media/music/" + musicFileName;
             String thumbnailKey = "media/thumbnail/" + thumbnailFileName;
 
+            //1.4. Sử dụng putObject để tải tệp nhạc (musicFile) lên S3.
             s3Client.putObject(
                     PutObjectRequest.builder()
                             .bucket(bucketName)
@@ -53,7 +54,7 @@ public class MusicServices {
                             .build(),
                     RequestBody.fromBytes(musicFile.getBytes())
             );
-
+            //1.5. Sử dụng putObject để tải ảnh thumbnail (thumbnailFile) lên S3.
             s3Client.putObject(
                     PutObjectRequest.builder()
                             .bucket(bucketName)
@@ -71,6 +72,7 @@ public class MusicServices {
             music.setUrlMusic("https://" + bucketName + ".s3.amazonaws.com/" + musicKey);
             music.setUrlThumbnail("https://" + bucketName + ".s3.amazonaws.com/" + thumbnailKey);
 
+            //1.6. Gọi method save(music) từ MusicRepository để lưu thông tin nhạc vào MongoDB dưới dạng 1 document.
             musicRepository.save(music);
             return "Upload successful";
 
