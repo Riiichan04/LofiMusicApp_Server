@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MusicRepository extends MongoRepository<Music, Integer> {
-
+    @Override
+    <S extends Music> S save(S music);
 }

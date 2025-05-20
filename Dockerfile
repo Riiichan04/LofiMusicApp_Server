@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy file JAR từ máy chủ vào container
 COPY target/Server_LofiMusic.jar app.jar
 
-# Mở port 8080
+# Mở port 8085
 EXPOSE 8085
 
 # Chạy ứng dụng Spring Boot
